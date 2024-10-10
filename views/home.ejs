@@ -9,7 +9,9 @@
     <h1>URL SHORTNER</h1>
     <% if (locals.id) { %>
         <p>Url generated: <a href="http://localhost:8001/url/<%= id %>">http://localhost:8001/url/<%= id %></a></p>
-    <% } %>
+    <% } else { %>
+    <p>You need to be logged in to generate a URL. <a href="/login">Login here</a></p>
+<% } %>
     <form method="POST" action="/url">
         <label>Enter your original url</label>
         <input type="text" name="url" placeholder="https//example.com"/>

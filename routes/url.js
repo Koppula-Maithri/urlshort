@@ -1,10 +1,11 @@
 const express = require("express");
 const { generatenew } = require("../controllers/url");
+const { restriction } = require('../middleware/auth'); 
 const URL = require("../models/url"); 
 const router = express.Router();
 
 // Route for generating a new shortened URL
-router.post('/', generatenew);
+router.post('/',restriction, generatenew);
 
 // Route for redirecting to the original URL
 router.get('/:shortId', async (req, res) => {
