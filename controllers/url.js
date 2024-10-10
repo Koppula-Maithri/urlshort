@@ -8,7 +8,7 @@ async function generatenew(req, res) {
     if (!body.url) return res.status(400).json({ error: "URL IS REQUIRED" });
 
     // Generate a short ID using shortid
-    const shortID = shortid.generate(); // Fixed the method
+    const shortID = shortid.generate();
 
     // Create the new URL document in the database
     await URL.create({
@@ -21,4 +21,6 @@ async function generatenew(req, res) {
     return res.render("home", { id: shortID });
 }
 
-module.exports = { generatenew };
+console.log("generatenew:", generatenew); // This should not be undefined
+
+module.exports = { generatenew }; // Ensure you're exporting the function correctly
