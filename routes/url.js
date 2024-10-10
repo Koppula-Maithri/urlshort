@@ -1,6 +1,6 @@
 const express = require("express");
 const { generatenew } = require("../controllers/url");
-const URL = require("../models/url"); // Import the URL model to query the database
+const URL = require("../models/url"); 
 const router = express.Router();
 
 // Route for generating a new shortened URL
@@ -15,10 +15,6 @@ router.get('/:shortId', async (req, res) => {
         if (!urlEntry) {
             return res.status(404).send("URL not found"); // Return 404 if not found
         }
-
-        // Optional: Record the visit (uncomment if you want to use visitHistory)
-        // urlEntry.visitHistory.push({ timestamp: Date.now() });
-        // await urlEntry.save();
 
         return res.redirect(urlEntry.redirectURL); // Redirect to the original URL
     } catch (error) {
